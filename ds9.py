@@ -72,33 +72,33 @@ while True:
             if ppos < 0: ppos = 9
             cp.pixels[ppos]=probe
             if ppos == wrmhole[station]:
-                if cp.switch:
+                if not cp.switch: 
                     cycle(1)
                     playstring("cdefgabk",.1)
                 else:
                     cycle(2)
-
+                    
                 score = score + 1
-            if steps <= 0 :
+            if steps <= 0 : 
                 launch = False
                 probes = probes - 1
-
+                
 
         if cp.button_a and launch == False:
-            if cp.switch: playnote("c",.1)
+            if not cp.switch: playnote("c",.1)
             launch = True
             steps = 4
             pdelta = 1
             ppos = station
-
-
+            
+        
         if cp.button_b and launch == False:
-            if cp.switch: playnote("c",.1)
+            if not cp.switch: playnote("c",.1)
             launch = True
             steps = 4
             pdelta = -1
             ppos = station
-
+        
         time.sleep(.3)
     #game over, show score
     cp.pixels.fill(blank)
